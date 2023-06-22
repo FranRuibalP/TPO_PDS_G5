@@ -1,4 +1,4 @@
-package Models;
+package models;
 
 import java.util.List;
 
@@ -9,9 +9,9 @@ public class Socio {
     private int dni;
     private String mail;
     private String telefono;
-    private MedioComunicacion medio;
-    private List<Prestamos> historiaPrestamos;
-    private List<Prestamos> prestamosActivos;
-    private Modificador modificadores;
+    //private MedioComunicacion medio;
+    //private List<Prestamos> historiaPrestamos;
+    //private List<Prestamos> prestamosActivos;
+    //private Modificador modificadores;
 
 }
