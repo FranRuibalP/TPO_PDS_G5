@@ -2,6 +2,8 @@ package models;
 
 import java.util.List;
 
+import enumerations.MedioComunicacion;
+
 
 public class Socio {
     private String nombre;
@@ -9,9 +11,9 @@ public class Socio {
     private int dni;
     private String mail;
     private String telefono;
-    //private MedioComunicacion medio;
-    //private List<Prestamos> historiaPrestamos;
-    //private List<Prestamos> prestamosActivos;
-    //private Modificador modificadores;
+    private MedioComunicacion medio;
+    private List<Prestamo> historiaPrestamos;
+    private List<Prestamo> prestamosActivos;
+    private Modificador modificadores;
 
 }
