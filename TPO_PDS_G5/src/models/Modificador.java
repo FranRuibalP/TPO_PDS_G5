@@ -1,5 +1,5 @@
 package models;
-import models.Socio;
+import models.Socio.Socio;
 
 public class Modificador {
 
@@ -10,5 +10,8 @@ public class Modificador {
 	public void actualizarDias(int dias) {
 		socio.getEjemplar().actualizarParam(dias);
 	}
-	
+
+	public int getDias() {
+		return diasPenalizacion;
+	}
 }

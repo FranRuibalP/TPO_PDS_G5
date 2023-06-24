@@ -76,6 +76,9 @@ public class Socio {
 		return state;
 	}
 
+	public Modificador getModificador() {
+		return modificador;
+	}
 
 
     
