@@ -12,7 +12,9 @@ public class Prestamo {
 	private int diasPrestamo;
 	private int diasTranscurridos;
 	
-	
+	public int calcularDiasPrestamo(){
+		return diasPrestamo;
+	}
 	
 	
 }
