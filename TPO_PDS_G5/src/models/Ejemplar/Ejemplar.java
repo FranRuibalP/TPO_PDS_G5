@@ -6,7 +6,7 @@ import models.Ejemplar.State.EstadoEjemplar;
 import models.Ejemplar.State.Prestado;
 import models.Ejemplar.State.Devuelto;
 
-public abstract class Ejemplar {
+public class Ejemplar {
     private int id;
     private String titulo;
     private String autor;
@@ -52,38 +52,24 @@ public abstract class Ejemplar {
     	return diasPrestamo;
     }
 
-    //buscar ejemplar devuelve Ejemplar
-    public Ejemplar buscarEjemplarId(int id) {
-        //list ejemplares
-        //for ejemplares
-        //if ejemplar.id == id
-        //return ejemplar
-        return null;
-    }
-    public Ejemplar buscarEjemplarPorTitulo(String titulo) {
-        //list ejemplares
-        //for ejemplares
-        //if ejemplar.titulo == titulo
-        //return ejemplar
-        return null;
-    }
-    public Ejemplar buscarEjemplarPorAutor(String autor) {
-        //list ejemplares
-        //for ejemplares
-        //if ejemplar.autor == autor
-        //return ejemplar
-        return null;
-    }
-    public Ejemplar buscarEjemplarPorFecha(Date fecha) {
-        //list ejemplares
-        //for ejemplares
-        //if ejemplar.fecha == fecha
-        //return ejemplar
-        return null;
+
+    public Ejemplar(){
+
     }
 
 	public Ubicacion getUbicacion() {
         return ubicacion;
     }
-    
+
+    public int getId() {
+        return id;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
 }

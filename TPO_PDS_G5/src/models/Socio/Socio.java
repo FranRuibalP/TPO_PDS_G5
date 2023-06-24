@@ -42,9 +42,12 @@ public class Socio {
 		this.modificador = modificador;
 		this.state = new Habilitado();
 	}
+	public Socio(){
 
+	}
 
 	public void SolicitarPrestamo(Ejemplar ejemplar) {
+
 		this.state.solicitarPrestamo(this, ejemplar);
 	}
 
@@ -77,6 +80,9 @@ public class Socio {
 		return modificador;
 	}
 
+	public int getDni() {
+		return dni;
+	}
 
     
     

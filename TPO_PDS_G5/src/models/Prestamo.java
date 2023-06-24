@@ -1,5 +1,4 @@
 package models;
-import java.sql.Date;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
@@ -8,6 +7,7 @@ import models.Socio.Socio;
 import strategies.Notificador;
 
 public class Prestamo {
+	private int id;
 	private Ejemplar ejemplar;
 	private Socio socio;
 	private LocalDate fechaSolicitud;
@@ -22,6 +22,7 @@ public class Prestamo {
 
 	public Prestamo(Ejemplar ejemplar, Socio socio) {
 		super();
+		this.id = id;
 		this.ejemplar = ejemplar;
 		this.socio = socio;
 		LocalDate date = LocalDate.now();
@@ -35,20 +36,41 @@ public class Prestamo {
 		notificador.enviarNotificacion(notificador.getNotificacion());
 	}
 
+	public  Prestamo(){
 
+	}
+	public int calcularPenalizacion(){
+
+		long diferenciaEnDias = ChronoUnit.DAYS.between(fechaDevolucion, fechaSolicitud);
+		return (int) diferenciaEnDias;
+	}
 	public void devolver(){
 		//ubicacion
 
 		Modificador modificador = socio.getModificador();
 		fechaDevolucion = LocalDate.now();
-		long diferenciaEnDias = ChronoUnit.DAYS.between(fechaDevolucion, fechaSolicitud);
-		socio.getModificador().setDias((int) diferenciaEnDias);
+		if (fechaDevolucion.isAfter(fechaSolicitud.plusDays(diasPrestamo))){
+			modificador.setDias(calcularPenalizacion());
+		}
+		else{
+			modificador.actualizarPrestamosEnTiempo();
+		}
+		socio.getModificador().setDias(calcularPenalizacion());
 		socio.getHistoriaPrestamos().add(this);
 		socio.getPrestamosActivos().remove(this);
 		ejemplar.devuelto();
 
 
 	}
-	
-	
+	public int getId(){
+		return id;
+	}
+
+	public Ejemplar getEjemplar() {
+		return ejemplar;
+	}
+
+	public Socio getSocio() {
+		return socio;
+	}
 }

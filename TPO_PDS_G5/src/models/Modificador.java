@@ -22,7 +22,7 @@ public class Modificador {
 		}
 	}
 
-	public void setPrestamosEnTiempo() {
+	public void actualizarPrestamosEnTiempo() {
 
 		this.prestamosEnTiempo += 1;
 		if (this.prestamosEnTiempo == 5) {
