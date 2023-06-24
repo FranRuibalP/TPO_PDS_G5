@@ -3,14 +3,15 @@ import strategies.NotificacionStrategy;
 
 public class Notificador {
 	
-	private static NotificacionStrategy estrategia;
+	private NotificacionStrategy estrategia;
 	
-	public static void CambiarEstrategia (NotificacionStrategy estrategia) {
-		Notificador.estrategia=estrategia;
+	public void setEstrategia(NotificacionStrategy estrategia) {
+		this.estrategia=estrategia;
 	}
 	
-	public static void enviarNotificacion(Notificacion notificacion) {
-		
+	public void enviarNotificacion(Notificacion notificacion) {
+		estrategia.enviarNotificacion(notificacion);
 	}
+	
 
 }

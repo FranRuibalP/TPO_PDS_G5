@@ -5,6 +5,8 @@ import java.util.List;
 
 import adapters.Ubicacion;
 import enumerations.MedioComunicacion;
+import models.Ejemplar;
+import models.Prestamo;
 
 
 public class Socio {
@@ -31,11 +33,13 @@ public class Socio {
 		this.prestamosActivos = prestamosActivos;
 		this.modificadores = modificadores;
 	}
-	
+
+	/*
 	public void SolicitarPrestamo(Prestamo prestamo) {
-		//new Prestamo prestamo();
-		//new Ejemplar(int, String titulo, String autor, Date fechaPublicacion, Ubicacion ubicacion);
+		new Prestamo(Ejemplar ejemplar, Socio socio, Date fechaSolicitud, Date fechaDevolucion, int diasPrestamo,
+			int diasTranscurridos);
 	}
+	*/
 
 	public List<Prestamo> getPrestamosActivos() {
 		return prestamosActivos;
