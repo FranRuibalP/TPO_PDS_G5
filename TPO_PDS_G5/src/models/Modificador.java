@@ -1,5 +1,6 @@
 package models;
 import models.Socio.Socio;
+import models.Socio.State.Suspendido;
 
 public class Modificador {
 
@@ -13,7 +14,12 @@ public class Modificador {
 	}
 
 	public void setDias(int diferenciaEnDias) {
-		this.diasPenalizacion = diferenciaEnDias;
+
+		this.diasPenalizacion += diferenciaEnDias;
+		if (this.diasPenalizacion >= 10) {
+			this.diasPenalizacion = 0;
+			this.socio.suspender();
+		}
 	}
 
 	public void setPrestamosEnTiempo() {

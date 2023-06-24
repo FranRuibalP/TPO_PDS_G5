@@ -37,15 +37,15 @@ public class Prestamo {
 
 
 	public void devolver(){
-		ejemplar.cambiarEstado(ejemplar.getState());
 		//ubicacion
 
-		//metodo para calcular los dias de penalizacion
 		Modificador modificador = socio.getModificador();
 		fechaDevolucion = LocalDate.now();
 		long diferenciaEnDias = ChronoUnit.DAYS.between(fechaDevolucion, fechaSolicitud);
 		socio.getModificador().setDias((int) diferenciaEnDias);
 		socio.getHistoriaPrestamos().add(this);
+		socio.getPrestamosActivos().remove(this);
+		ejemplar.devuelto();
 
 
 	}

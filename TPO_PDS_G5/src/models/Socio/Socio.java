@@ -57,10 +57,7 @@ public class Socio {
 		return historiaPrestamos;
 		//actualizar parametro en diagrama
 	}
-	
-	
-	
-	
+
 	public Prestamo getPrestamo() {
 		return prestamo;
 	}
@@ -69,8 +66,8 @@ public class Socio {
 		return ejemplar;
 	}
 
-	public void actualizarEstadoSocio(EstadoSocio state) {
-			this.state= state;
+	public void suspender() {
+			this.state = new Suspendido();
 	}
 	public EstadoSocio getState() {
 		return state;

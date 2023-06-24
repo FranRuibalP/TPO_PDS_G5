@@ -13,7 +13,8 @@ public class Habilitado implements EstadoSocio{
 
     public void solicitarPrestamo(Socio socio, Ejemplar ejemplar){
         if(ejemplar.solicitarEjemplar()){
-            new Prestamo(ejemplar, socio);
+            socio.getPrestamosActivos().add(new Prestamo(ejemplar, socio));
+            ejemplar.prestado();
         }
     }
 }

@@ -30,15 +30,17 @@ public abstract class Ejemplar {
 	}
     
     public void actualizarParam(int diasPrestamo) {
-    	this.diasPrestamo=diasPrestamo;
+
+        this.diasPrestamo=diasPrestamo;
     }
 
-    public void cambiarEstado(EstadoEjemplar state) {
-        this.state = state;
-    }
+    public void devuelto() {
 
-    public EstadoEjemplar getState() {
-        return state;
+        this.state = new Devuelto();
+    }
+    public void prestado() {
+
+        this.state = new Prestado();
     }
 
     //solicitar ejemplar devuelve boolean
@@ -49,8 +51,39 @@ public abstract class Ejemplar {
     public int getDiasPrestamo() {
     	return diasPrestamo;
     }
-    
-    
-	
+
+    //buscar ejemplar devuelve Ejemplar
+    public Ejemplar buscarEjemplarId(int id) {
+        //list ejemplares
+        //for ejemplares
+        //if ejemplar.id == id
+        //return ejemplar
+        return null;
+    }
+    public Ejemplar buscarEjemplarPorTitulo(String titulo) {
+        //list ejemplares
+        //for ejemplares
+        //if ejemplar.titulo == titulo
+        //return ejemplar
+        return null;
+    }
+    public Ejemplar buscarEjemplarPorAutor(String autor) {
+        //list ejemplares
+        //for ejemplares
+        //if ejemplar.autor == autor
+        //return ejemplar
+        return null;
+    }
+    public Ejemplar buscarEjemplarPorFecha(Date fecha) {
+        //list ejemplares
+        //for ejemplares
+        //if ejemplar.fecha == fecha
+        //return ejemplar
+        return null;
+    }
+
+	public Ubicacion getUbicacion() {
+        return ubicacion;
+    }
     
 }
