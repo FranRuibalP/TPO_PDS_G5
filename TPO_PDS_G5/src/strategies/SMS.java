@@ -2,4 +2,10 @@ package strategies;
 
 public class SMS implements NotificacionStrategy{
 
+	@Override
+	public void enviarNotificacion(Notificacion notificacion) {
+		 String mensaje = notificacion.getMensaje();
+	     System.out.println("Enviando notificación por SMS: " + mensaje);
+	}
+
 }
