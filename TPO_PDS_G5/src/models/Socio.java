@@ -18,10 +18,12 @@ public class Socio {
     private MedioComunicacion medio;
     private List<Prestamo> historiaPrestamos;
     private List<Prestamo> prestamosActivos;
-    private Modificador modificadores;
+    private Modificador modificador;
+    private Prestamo prestamo;
+    private Ejemplar ejemplar;
     
 	public Socio(String nombre, String apellido, int dni, String mail, String telefono, MedioComunicacion medio,
-			List<Prestamo> historiaPrestamos, List<Prestamo> prestamosActivos, Modificador modificadores) {
+			List<Prestamo> historiaPrestamos, List<Prestamo> prestamosActivos, Modificador modificador) {
 		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -31,7 +33,7 @@ public class Socio {
 		this.medio = medio;
 		this.historiaPrestamos = historiaPrestamos;
 		this.prestamosActivos = prestamosActivos;
-		this.modificadores = modificadores;
+		this.modificador = modificador;
 	}
 
 	/*
@@ -50,6 +52,17 @@ public class Socio {
 		//actualizar parametro en diagrama
 	}
 	
+	
+	
+	
+	public Prestamo getPrestamo() {
+		return prestamo;
+	}
+
+	public Ejemplar getEjemplar() {
+		return ejemplar;
+	}
+
 	public void actualizarEstadoSocio() {
 			
 	}

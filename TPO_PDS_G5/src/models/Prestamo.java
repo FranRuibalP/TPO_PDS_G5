@@ -3,6 +3,7 @@ import java.sql.Date;
 
 import models.Ejemplar;
 import models.Socio;
+import strategies.Notificador;
 
 public class Prestamo {
 	private Ejemplar ejemplar;
@@ -11,6 +12,7 @@ public class Prestamo {
 	private Date fechaDevolucion;
 	private int diasPrestamo;
 	private int diasTranscurridos;
+	private Notificador notificador;
 	
 	public int calcularDiasPrestamo(){
 		return diasPrestamo;
@@ -27,7 +29,11 @@ public class Prestamo {
 		this.diasTranscurridos = diasTranscurridos;
 	}
 	
+	public void notificar(Socio socio){
+		notificador.enviarNotificacion(notificador.getNotificacion());
+	}
 	
+	//public calcular penalizacion
 	
 	
 }
