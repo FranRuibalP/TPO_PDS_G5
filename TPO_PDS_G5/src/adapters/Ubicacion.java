@@ -1,11 +1,7 @@
 package adapters;
-import adapters.IAdapterExterno;
-import models.Ejemplar;
+import models.Ejemplar.Ejemplar;
 
 public class Ubicacion {
-	
-	
-	
 	private int filas;
 	private int columnas;
 	

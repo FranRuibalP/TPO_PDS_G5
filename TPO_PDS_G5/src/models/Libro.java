@@ -3,8 +3,9 @@ package models;
 import java.sql.Date;
 
 import adapters.Ubicacion;
+import models.Ejemplar.Ejemplar;
 
-public class Libro extends Ejemplar{
+public class Libro extends Ejemplar {
 
 	public Libro(int id, String titulo, String autor, Date fechaPublicacion, Ubicacion ubicacion) {
 		super(id, titulo, autor, fechaPublicacion, ubicacion);

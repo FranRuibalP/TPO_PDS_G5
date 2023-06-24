@@ -1,8 +1,8 @@
 package models;
 import java.sql.Date;
 
-import models.Ejemplar;
-import models.Socio;
+import models.Ejemplar.Ejemplar;
+import models.Socio.Socio;
 import strategies.Notificador;
 
 public class Prestamo {

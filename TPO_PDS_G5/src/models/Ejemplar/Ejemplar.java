@@ -1,7 +1,10 @@
-package models;
+package models.Ejemplar;
 
 import java.sql.Date;
 import adapters.Ubicacion;
+import models.Ejemplar.State.EstadoEjemplar;
+import models.Ejemplar.State.Prestado;
+import models.Ejemplar.State.Devuelto;
 
 public abstract class Ejemplar {
     private int id;
@@ -11,6 +14,8 @@ public abstract class Ejemplar {
     //private EstadoEjemplar estado;
     private Ubicacion ubicacion;
     private int diasPrestamo;
+
+    private EstadoEjemplar state;
 	
     public Ejemplar(int id, String titulo, String autor, Date fechaPublicacion, Ubicacion ubicacion) {
 		
@@ -20,10 +25,29 @@ public abstract class Ejemplar {
 		this.autor = autor;
 		this.fechaPublicacion = fechaPublicacion;
 		this.ubicacion = ubicacion;
+        this.state = new Devuelto();
+
 	}
     
     public void actualizarParam(int diasPrestamo) {
     	this.diasPrestamo=diasPrestamo;
+    }
+
+    public void cambiarEstado(EstadoEjemplar state) {
+        this.state = state;
+    }
+
+    public EstadoEjemplar getState() {
+        return state;
+    }
+
+    //solicitar ejemplar devuelve boolean
+    public boolean solicitarEjemplar() {
+        return state.solicitarEjemplar(this);
+
+    }
+    public int getDiasPrestamo() {
+    	return diasPrestamo;
     }
     
     

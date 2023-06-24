@@ -1,5 +1,4 @@
 package adapters;
-import models.Ejemplar;
 
 public class AdapterExterno implements IAdapterExterno {
 	

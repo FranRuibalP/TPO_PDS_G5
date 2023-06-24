@@ -1,11 +1,16 @@
-package models;
+package models.Socio;
 
 import java.sql.Date;
 import java.util.List;
 
+import models.Modificador;
+import models.Socio.State.EstadoSocio;
+import models.Socio.State.Habilitado;
+import models.Socio.State.Suspendido;
+
 import adapters.Ubicacion;
 import enumerations.MedioComunicacion;
-import models.Ejemplar;
+import models.Ejemplar.Ejemplar;
 import models.Prestamo;
 
 
@@ -21,6 +26,7 @@ public class Socio {
     private Modificador modificador;
     private Prestamo prestamo;
     private Ejemplar ejemplar;
+	private EstadoSocio state;
     
 	public Socio(String nombre, String apellido, int dni, String mail, String telefono, MedioComunicacion medio,
 			List<Prestamo> historiaPrestamos, List<Prestamo> prestamosActivos, Modificador modificador) {
@@ -34,14 +40,14 @@ public class Socio {
 		this.historiaPrestamos = historiaPrestamos;
 		this.prestamosActivos = prestamosActivos;
 		this.modificador = modificador;
+		this.state = new Habilitado();
 	}
 
-	/*
-	public void SolicitarPrestamo(Prestamo prestamo) {
-		new Prestamo(Ejemplar ejemplar, Socio socio, Date fechaSolicitud, Date fechaDevolucion, int diasPrestamo,
-			int diasTranscurridos);
+
+	public void SolicitarPrestamo(Ejemplar ejemplar) {
+		this.state.solicitarPrestamo(this, ejemplar);
 	}
-	*/
+
 
 	public List<Prestamo> getPrestamosActivos() {
 		return prestamosActivos;
@@ -63,9 +69,14 @@ public class Socio {
 		return ejemplar;
 	}
 
-	public void actualizarEstadoSocio() {
-			
+	public void actualizarEstadoSocio(EstadoSocio state) {
+			this.state= state;
 	}
+	public EstadoSocio getState() {
+		return state;
+	}
+
+
 
     
     
