@@ -14,6 +14,7 @@ public class Notificador {
 	public void enviarNotificacion(Notificacion notificacion) {
 		estrategia.enviarNotificacion(notificacion);
 	}
+	
 
 	public Notificacion getNotificacion() {
 		return notificacion;
