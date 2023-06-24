@@ -1,7 +1,9 @@
 package models;
 
+import java.sql.Date;
 import java.util.List;
 
+import adapters.Ubicacion;
 import enumerations.MedioComunicacion;
 
 
@@ -31,7 +33,8 @@ public class Socio {
 	}
 	
 	public void SolicitarPrestamo(Prestamo prestamo) {
-		
+		//new Prestamo prestamo();
+		//new Ejemplar(int, String titulo, String autor, Date fechaPublicacion, Ubicacion ubicacion);
 	}
 
 	public List<Prestamo> getPrestamosActivos() {

@@ -12,5 +12,10 @@ public class Revista extends Ejemplar{
 	}
 
 	private int diasPrestamo=5;
+	
+	public void actualizarParam(int diasPrestamo) {
+    	this.diasPrestamo=diasPrestamo;
+    }
+	
 
 }

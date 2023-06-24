@@ -11,6 +11,10 @@ public class Diario extends Ejemplar{
 		// TODO Auto-generated constructor stub
 	}
 
-	private int DiasPrestamo=5;
+	private int diasPrestamo=5;
+	
+	public void actualizarParam(int diasPrestamo) {
+    	this.diasPrestamo=diasPrestamo;
+    }
 	
 }

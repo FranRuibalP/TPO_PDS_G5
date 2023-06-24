@@ -15,6 +15,19 @@ public class Prestamo {
 	public int calcularDiasPrestamo(){
 		return diasPrestamo;
 	}
+
+	public Prestamo(Ejemplar ejemplar, Socio socio, Date fechaSolicitud, Date fechaDevolucion, int diasPrestamo,
+			int diasTranscurridos) {
+		super();
+		this.ejemplar = ejemplar;
+		this.socio = socio;
+		this.fechaSolicitud = fechaSolicitud;
+		this.fechaDevolucion = fechaDevolucion;
+		this.diasPrestamo = diasPrestamo;
+		this.diasTranscurridos = diasTranscurridos;
+	}
+	
+	
 	
 	
 }

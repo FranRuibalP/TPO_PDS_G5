@@ -13,4 +13,10 @@ public class Libro extends Ejemplar{
 
 	private int diasPrestamo=10;
 	
+	public void actualizarParam(int diasPrestamo) {
+    	this.diasPrestamo=diasPrestamo;
+    }
+    
+	
+	
 }

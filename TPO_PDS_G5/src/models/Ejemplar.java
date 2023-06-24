@@ -10,6 +10,7 @@ public abstract class Ejemplar {
     private Date fechaPublicacion;
     //private EstadoEjemplar estado;
     private Ubicacion ubicacion;
+    private int diasPrestamo;
 	
     public Ejemplar(int id, String titulo, String autor, Date fechaPublicacion, Ubicacion ubicacion) {
 		
@@ -20,6 +21,10 @@ public abstract class Ejemplar {
 		this.fechaPublicacion = fechaPublicacion;
 		this.ubicacion = ubicacion;
 	}
+    
+    public void actualizarParam(int diasPrestamo) {
+    	this.diasPrestamo=diasPrestamo;
+    }
     
     
 	
