@@ -44,7 +44,7 @@ public class Prestamo {
 		Modificador modificador = socio.getModificador();
 		fechaDevolucion = LocalDate.now();
 		long diferenciaEnDias = ChronoUnit.DAYS.between(fechaDevolucion, fechaSolicitud);
-		modificador.actualizarDias((int) diferenciaEnDias);
+		socio.getModificador().setDias((int) diferenciaEnDias);
 		socio.getHistoriaPrestamos().add(this);
 
 
