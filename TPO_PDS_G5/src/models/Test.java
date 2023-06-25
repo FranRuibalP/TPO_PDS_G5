@@ -1,11 +1,13 @@
 package models;
 import models.Socio.*;
+import strategies.Notificador;
 import models.Modificador;
 import models.Ejemplar.Ejemplar;
 
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -22,26 +24,25 @@ public class Test {
 		
 		Modificador modificador=new Modificador();
 		
+		Notificador notificador = new Notificador();
+		
 		MedioComunicacion medio= MedioComunicacion.EMAIL  ;
+
+		ArrayList<Prestamo> prestamosActivos=new ArrayList<Prestamo>();
 		
-		Prestamo prestamo=new Prestamo();
+		ArrayList<Prestamo> historiaPrestamos=new ArrayList<Prestamo>();
+
+		Ubicacion ubicacion=new Ubicacion ( 1, 2 ) ;
 		
-		//Ubicacion ubicacion=new Ubicacion (int filas, int columnas ) ;
-		
-		//Ejemplar ejemplar =new Ejemplar(int id, String titulo, String autor, Date fechaPublicacion, Ubicacion ubicacion)
-		//Prestamo prestamo =new Prestamo(Ejemplar ejemplar, Socio socio);
-		
-		//socio
-		//ejemplar
-		//prestamo
-		//notificador
-		
-		//String nombre, String apellido, int dni, String mail, String telefono, MedioComunicacion medio,
-		//List<Prestamo> historiaPrestamos, List<Prestamo> prestamosActivos, Modificador modificador
+		Date fecha = Date.valueOf("1987-02-15");
 		
 		
 		
-		//Socio socio=new Socio("Lionel","Messi",12345678,"capo@gmail.com","44335126",medio,);
+		Ejemplar ejemplar = new Ejemplar (15 , "hola ", "Alberto" , fecha , ubicacion );
+		
+		Socio socio=new Socio("Lionel","Messi",12345678,"capo@gmail.com","44335126",medio,historiaPrestamos,prestamosActivos,modificador);
+		
+		Prestamo prestamo = new Prestamo (ejemplar, socio);
 	
 		
 		System.out.println("Ingrese accion a realizar : ");
