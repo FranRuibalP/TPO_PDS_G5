@@ -11,11 +11,15 @@ import java.sql.Date;
 public class Habilitado implements EstadoSocio{
     Date fecha = new Date(System.currentTimeMillis());
 
-    public void solicitarPrestamo(Socio socio, Ejemplar ejemplar){
+    public Prestamo solicitarPrestamo(Socio socio, Ejemplar ejemplar){
+    	
         if(ejemplar.solicitarEjemplar()){
-            socio.getPrestamosActivos().add(new Prestamo(ejemplar, socio));
+        	Prestamo prestamito=new Prestamo(ejemplar, socio);
+        	socio.getPrestamosActivos().add(prestamito);
             ejemplar.prestado();
+            return prestamito;
         }
+        return null;
     }
 }
 

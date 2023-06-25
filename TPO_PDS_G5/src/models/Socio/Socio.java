@@ -45,7 +45,12 @@ public class Socio {
 	public Socio(){
 
 	}
+	
+	
 
+	public String getNombre() {
+		return nombre;
+	}
 	public void SolicitarPrestamo(Ejemplar ejemplar) {
 
 		this.state.solicitarPrestamo(this, ejemplar);

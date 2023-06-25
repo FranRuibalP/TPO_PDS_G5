@@ -7,7 +7,7 @@ import models.Socio.Socio;
 import strategies.Notificador;
 
 public class Prestamo {
-	private int id;
+
 	private Ejemplar ejemplar;
 	private Socio socio;
 	private LocalDate fechaSolicitud;
@@ -22,7 +22,7 @@ public class Prestamo {
 
 	public Prestamo(Ejemplar ejemplar, Socio socio) {
 		super();
-		this.id = id;
+
 		this.ejemplar = ejemplar;
 		this.socio = socio;
 		LocalDate date = LocalDate.now();
@@ -62,8 +62,20 @@ public class Prestamo {
 
 
 	}
-	public int getId(){
-		return id;
+
+	
+	
+
+	public LocalDate getFechaSolicitud() {
+		return fechaSolicitud;
+	}
+
+	public LocalDate getFechaDevolucion() {
+		return fechaDevolucion;
+	}
+
+	public int getDiasPrestamo() {
+		return diasPrestamo;
 	}
 
 	public Ejemplar getEjemplar() {
@@ -72,5 +84,10 @@ public class Prestamo {
 
 	public Socio getSocio() {
 		return socio;
+	}
+	
+	public String toString() {
+		return " Socio : " + this.getSocio().getNombre()  + " Titulo : " + this.getEjemplar().getTitulo() + " Fecha Solicitud: " + this.getFechaSolicitud() + 
+				" Fecha de devolucion: " + this.getFechaDevolucion() + " Dias transcurridos: " + this.getDiasPrestamo();
 	}
 }

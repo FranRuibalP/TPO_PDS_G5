@@ -44,18 +44,18 @@ public class ControllerPrestamo {
         prestamos.add(prestamo);
     }
 
-    public Prestamo buscarPrestamo(int id) {
+    public Prestamo buscarPrestamo(int  dni , String id) {
         for (Prestamo prestamo :  prestamos) {
-            if (prestamo.getId() == id) {
+            if (prestamo.getSocio().getDni() == dni && prestamo.getEjemplar().getId()== id) {
                 return prestamo;
             }
         }
         return null;
     }
 
-    public void eliminarPrestamo(int id) {
+    public void eliminarPrestamo(int  dni , String id) {
         for (Prestamo prestamo :  prestamos) {
-            if (prestamo.getId() == id) {
+            if (prestamo.getSocio().getDni() == dni && prestamo.getEjemplar().getId()== id) {
                 prestamos.remove(prestamo);
                 return;
             }

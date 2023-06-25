@@ -29,7 +29,22 @@ public class Ejemplar {
 
 	}
     
-    public void actualizarParam(int diasPrestamo) {
+    
+    
+    public Ejemplar(String id, String titulo, String autor, Date fechaPublicacion, Ubicacion ubicacion,
+			int diasPrestamo) {
+		super();
+		this.id = id;
+		this.titulo = titulo;
+		this.autor = autor;
+		this.fechaPublicacion = fechaPublicacion;
+		this.ubicacion = ubicacion;
+		this.diasPrestamo = diasPrestamo;
+	}
+
+
+
+	public void actualizarParam(int diasPrestamo) {
 
         this.diasPrestamo=diasPrestamo;
     }

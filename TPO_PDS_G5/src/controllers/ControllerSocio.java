@@ -36,9 +36,10 @@ public class ControllerSocio{
         }
         return instancia;
     }
-    public void SolicitarPrestamo(Ejemplar ejemplar,Socio socio) {
+    public Prestamo SolicitarPrestamo(Ejemplar ejemplar,Socio socio) {
 
-        socio.getState().solicitarPrestamo(socio, ejemplar);
+        Prestamo prestamo = socio.getState().solicitarPrestamo(socio, ejemplar);
+        return prestamo;
     }
     public void nuevoSocio(Socio socio) {
         socios.add(socio);
