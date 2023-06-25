@@ -8,6 +8,10 @@ public class Ubicacion {
 	private Integer filas;
 	private Integer columnas;
 	
+	public Ubicacion (int filas, int columnas) {
+		
+	}
+	
 	public ArrayList<Integer> buscarEjemplar(Ejemplar ejemplar) {
 
 		ArrayList<Integer> encontrado=IAdapterExterno.buscarEjemplar(ejemplar);

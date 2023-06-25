@@ -11,9 +11,7 @@ public class ControllerEjemplar{
     private static ControllerEjemplar instancia;
     private ArrayList<Ejemplar> ejemplares;
 
-    public  ControllerEjemplar() {
-    	List<Ejemplar> ejemplares=new ArrayList<>();
-    }
+    private ControllerEjemplar() {}
 
     public void devuelto(Ejemplar ejemplar) {
         ejemplar.devuelto();

@@ -7,7 +7,7 @@ public class Modificador {
 	private int diasPenalizacion = 0;
 	private int prestamosEnTiempo = 0;
 	private Socio socio;
-
+	
 
 	public int getDias() {
 		return diasPenalizacion;
@@ -19,6 +19,7 @@ public class Modificador {
 		if (this.diasPenalizacion >= 10) {
 			this.diasPenalizacion = 0;
 			this.socio.suspender();
+			//lo deberia hacer otra clase el metodo suspender
 		}
 	}
 

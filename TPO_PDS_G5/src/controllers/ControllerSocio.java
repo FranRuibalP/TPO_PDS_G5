@@ -12,9 +12,8 @@ public class ControllerSocio{
     private static ControllerSocio instancia;
     private ArrayList<Socio> socios;
 
-    public  ControllerSocio() {
-    	List<Socio> socios=new ArrayList<>();
-    }
+    private ControllerSocio() { }
+    
     public List<Prestamo> getHistoriaPrestamos(Socio socio) {
         return socio.getHistoriaPrestamos();
 
