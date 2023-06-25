@@ -47,7 +47,21 @@ public class Socio {
 	}
 	
 	
+	
+	
 
+	public String getMail() {
+		return mail;
+	}
+	public String getTelefono() {
+		return telefono;
+	}
+	public MedioComunicacion getMedio() {
+		return medio;
+	}
+	public void setMedio(MedioComunicacion medio) {
+		this.medio = medio;
+	}
 	public String getNombre() {
 		return nombre;
 	}

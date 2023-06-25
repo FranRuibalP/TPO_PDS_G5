@@ -12,6 +12,14 @@ public class Modificador {
 	public int getDias() {
 		return diasPenalizacion;
 	}
+	
+	
+
+	public int getPrestamosEnTiempo() {
+		return prestamosEnTiempo;
+	}
+
+
 
 	public void setDias(int diferenciaEnDias) {
 

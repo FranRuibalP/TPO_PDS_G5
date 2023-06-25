@@ -12,8 +12,26 @@ public class Diario extends Ejemplar {
 		// TODO Auto-generated constructor stub
 	}
 
+	public Diario() {
+		// TODO Auto-generated constructor stub
+	}
+
 	private int diasPrestamo=5;
 	
+	
+	
+	public int getDiasPrestamo() {
+		return diasPrestamo;
+	}
+
+
+
+	public void setDiasPrestamo(int diasPrestamo) {
+		this.diasPrestamo = diasPrestamo;
+	}
+
+
+
 	public void actualizarParam(int diasPrestamo) {
     	this.diasPrestamo=diasPrestamo;
     }

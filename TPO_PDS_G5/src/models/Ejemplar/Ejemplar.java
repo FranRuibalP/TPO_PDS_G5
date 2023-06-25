@@ -17,22 +17,9 @@ public class Ejemplar {
 
     private EstadoEjemplar state;
 	
-    public Ejemplar(String id, String titulo, String autor, Date fechaPublicacion, Ubicacion ubicacion) {
-		
-		super();
-		this.id = id;
-		this.titulo = titulo;
-		this.autor = autor;
-		this.fechaPublicacion = fechaPublicacion;
-		this.ubicacion = ubicacion;
-        this.state = new Devuelto();
 
-	}
     
-    
-    
-    public Ejemplar(String id, String titulo, String autor, Date fechaPublicacion, Ubicacion ubicacion,
-			int diasPrestamo) {
+    public Ejemplar(String id, String titulo, String autor, Date fechaPublicacion, Ubicacion ubicacion) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
@@ -40,6 +27,7 @@ public class Ejemplar {
 		this.fechaPublicacion = fechaPublicacion;
 		this.ubicacion = ubicacion;
 		this.diasPrestamo = diasPrestamo;
+		this.state=new Devuelto();
 	}
 
 
@@ -58,7 +46,6 @@ public class Ejemplar {
         this.state = new Prestado();
     }
 
-    //solicitar ejemplar devuelve boolean
     public boolean solicitarEjemplar() {
         return state.solicitarEjemplar(this);
 

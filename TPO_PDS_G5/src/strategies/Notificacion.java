@@ -10,6 +10,15 @@ public class Notificacion {
 	private String telefono;
 	private String email;
 	
+	
+	
+	public Notificacion(Date fecha, String motivo, String telefono, String email) {
+		super();
+		this.fecha = fecha;
+		this.motivo = motivo;
+		this.telefono = telefono;
+		this.email = email;
+	}
 	public String getMensaje() {
 		return mensaje;
 	}

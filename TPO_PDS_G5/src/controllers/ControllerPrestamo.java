@@ -32,7 +32,7 @@ public class ControllerPrestamo {
         return prestamo.calcularPenalizacion();
     }
     public int calcularDiasPrestamo(Prestamo prestamo) {
-        return prestamo.calcularDiasPrestamo(prestamo.getEjemplar(),prestamo.getSocio());
+        return prestamo.calcularDiasPrestamo(prestamo.getEjemplar(),prestamo.getSocio(),prestamo.getDiasPrestamo());
     }
     public void notificar(Prestamo prestamo) {
         prestamo.notificar(prestamo.getSocio());

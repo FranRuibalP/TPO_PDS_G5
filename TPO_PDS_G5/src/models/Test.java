@@ -1,5 +1,6 @@
 package models;
 import models.Socio.*;
+import strategies.NotificacionStrategy;
 import strategies.Notificador;
 import models.Modificador;
 import models.Ejemplar.Ejemplar;
@@ -13,9 +14,11 @@ import java.util.Scanner;
 
 import adapters.Ubicacion;
 import controllers.ControllerEjemplar;
+import controllers.ControllerPrestamo;
 import controllers.ControllerSocio;
 import enumerations.MedioComunicacion;
 import enumerations.MedioComunicacion;
+import strategies.Notificacion;
 
 public class Test {
 
@@ -46,8 +49,6 @@ public class Test {
 		ControllerEjemplar.obtenerInstancia().nuevoEjemplar(revista);
 		
 		
-		Ejemplar ejemplar = new Ejemplar ("15" , "hola ", "Alberto" , fecha , ubicacion , 10);
-		
 		Socio socio=new Socio("Lionel","Messi",12345678,"capo@gmail.com","44335126",medio,historiaPrestamos,prestamosActivos,modificador);
 		
 		ArrayList<Socio> listaSocios=new ArrayList<Socio>();
@@ -56,10 +57,32 @@ public class Test {
 		
 		ControllerSocio.obtenerInstancia().nuevoSocio(socio);
 		
+		ControllerSocio instanciaSocio=ControllerSocio.obtenerInstancia();
+		
+		ControllerPrestamo instanciaPrestamo= ControllerPrestamo.obtenerInstancia();
 		
 		
-		Prestamo prestamo = new Prestamo (ejemplar, socio);
+		Prestamo prestamo = new Prestamo (revista, socio);
+		
+		
+		
+		Notificador contexto=new Notificador();
+		
+		/*
+		 * private String mensaje;
+	private Date fecha;
+	private String motivo;
+	private String telefono;
+	private String email;
+		 */
+		
+		Notificacion notificacion = new Notificacion(fecha,"prueba",socio.getTelefono(),socio.getMail());
+		
+		contexto.setNotificacion(notificacion);
+		
+		contexto.setEstrategia(socio.getMedio());
 	
+		
 		
 		System.out.println("Ingrese accion a realizar : ");
 		System.out.println("Salir del sistema = 0 ");
@@ -230,6 +253,8 @@ public class Test {
 						
 						Prestamo prestamoFinal = ControllerSocio.obtenerInstancia().SolicitarPrestamo(EjemplarDevuelto, socioRealizaDevolucion);
 						
+						prestamoFinal.setDiasTranscurridos(15);
+						
 						if (prestamoFinal.equals(null)) {
 							System.out.println("No se ha podido realizar el prestamo");
 						}
@@ -242,6 +267,26 @@ public class Test {
 						break;
 				
 					case "2":
+						Socio socioRealizaDevolucion2 = ControllerSocio.obtenerInstancia().buscarSocio(12345678);
+						Ejemplar EjemplarDevuelto2 = ControllerEjemplar.obtenerInstancia().buscarEjemplarId("15");
+						
+						Prestamo prestamoFinal2 = ControllerSocio.obtenerInstancia().SolicitarPrestamo(EjemplarDevuelto2, socioRealizaDevolucion2);
+						
+						prestamoFinal2.setDiasTranscurridos(200);
+						
+						prestamoFinal2.devolver();
+						
+						// HACER BIEN EL SUSPENDER
+						
+						System.out.println(prestamoFinal2.toString());
+						
+						Modificador mod=prestamoFinal2.getSocio().getModificador();
+						
+						
+						System.out.println(mod.getDias());
+						System.out.println(mod.getPrestamosEnTiempo());
+
+						
 						
 						break;
 
@@ -251,10 +296,62 @@ public class Test {
 				
 			case "5":
 				
+				System.out.println("Que tipo desea: Revista, Diario, Revista Especial, Libro");
 				
+				System.out.println("Que tipo desea: Revista, Diario, Revista Especial, Libro");
+				
+				Scanner scannerLibrito= new Scanner(System.in);
+				
+
+				String cambioLibro=  scannerLibrito.nextLine();
+				
+				switch(cambioLibro){
+					case "Diario":
+						
+						Diario diario = new Diario();
+						
+						System.out.println("Ingrese la cantidad de dias: "); 
+						
+						Scanner cantidadDias= new Scanner(System.in);
+						
+						String cambiarDias=  cantidadDias.nextLine();
+						
+						diario.setDiasPrestamo( Integer.parseInt(cambiarDias) );
+						
+						System.out.println(diario.getDiasPrestamo());
+						
+						break;
+						
+				}
+
+				break;
+				
+			case"6":
+				
+				Socio socioRealizaDevolucion2 = ControllerSocio.obtenerInstancia().buscarSocio(12345678);
+				Ejemplar EjemplarDevuelto2 = ControllerEjemplar.obtenerInstancia().buscarEjemplarId("15");
+				
+				Prestamo prestamoFinal2 = ControllerSocio.obtenerInstancia().SolicitarPrestamo(EjemplarDevuelto2, socioRealizaDevolucion2);
+				
+				for(int i=0;i<10;i++) {
+					prestamoFinal2.setDiasTranscurridos(prestamoFinal2.getDiasTranscurridos()+1);
+					System.out.println(prestamoFinal2.getDiasTranscurridos());
+					System.out.println(prestamoFinal2.getDiasPrestamo());
+					if (i==8) { //prestamoFinal2.getDiasTranscurridos()==prestamoFinal2.getDiasPrestamo()-1) {
+						System.out.println("dasd");
+						
+						prestamoFinal2.setNotificador(contexto);
+						
+						instanciaPrestamo.notificar(prestamoFinal2);
+
+						
+					}
+					
+				}
 				
 				
 				break;
+				
 				
 			case "7":
 				
