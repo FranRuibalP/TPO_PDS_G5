@@ -1,17 +1,18 @@
 package controllers;
 
+import models.Prestamo;
 import models.Ejemplar.Ejemplar;
 
-
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class ControllerEjemplar{
     private static ControllerEjemplar instancia;
-    private List<Ejemplar> ejemplares;
+    private ArrayList<Ejemplar> ejemplares;
 
-    public void ControllerEjemplar() {
-        Ejemplar ejemplar = new Ejemplar();
+    public  ControllerEjemplar() {
+    	List<Ejemplar> ejemplares=new ArrayList<>();
     }
 
     public void devuelto(Ejemplar ejemplar) {

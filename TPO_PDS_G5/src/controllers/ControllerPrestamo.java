@@ -3,15 +3,15 @@ package controllers;
 
 import models.Prestamo;
 
-
+import java.util.ArrayList;
 import java.util.List;
 
 public class ControllerPrestamo {
     private static ControllerPrestamo instancia;
-    private List<Prestamo> prestamos;
+    private ArrayList<Prestamo> prestamos;
 
-    public void ControllerPrestamo() {
-        Prestamo prestamo = new Prestamo();
+    public ControllerPrestamo() {
+    	List<Prestamo> prestamos=new ArrayList<>();
     }
 
     public static ControllerPrestamo obtenerInstancia() {

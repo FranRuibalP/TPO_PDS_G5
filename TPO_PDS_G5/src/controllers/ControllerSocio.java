@@ -4,15 +4,16 @@ import models.Ejemplar.Ejemplar;
 import models.Prestamo;
 import models.Socio.Socio;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class ControllerSocio{
     private static ControllerSocio instancia;
-    private List<Socio> socios;
+    private ArrayList<Socio> socios;
 
-    public void SocioController() {
-        Socio socio = new Socio();
+    public  ControllerSocio() {
+    	List<Socio> socios=new ArrayList<>();
     }
     public List<Prestamo> getHistoriaPrestamos(Socio socio) {
         return socio.getHistoriaPrestamos();
