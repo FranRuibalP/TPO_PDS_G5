@@ -11,8 +11,19 @@ import java.util.List;
 public class ControllerSocio{
     private static ControllerSocio instancia;
     private ArrayList<Socio> socios;
+    
+    
+    
 
-    private ControllerSocio() { }
+    public void setSocios(ArrayList<Socio> socios) {
+		this.socios = socios;
+	}
+
+	public ArrayList<Socio> getSocios() {
+		return socios;
+	}
+
+	private ControllerSocio() { }
     
     public List<Prestamo> getHistoriaPrestamos(Socio socio) {
         return socio.getHistoriaPrestamos();

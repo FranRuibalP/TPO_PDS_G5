@@ -7,7 +7,7 @@ import models.Ejemplar.Ejemplar;
 
 public class Diario extends Ejemplar {
 
-	public Diario(int id, String titulo, String autor, Date fechaPublicacion, Ubicacion ubicacion) {
+	public Diario(String id, String titulo, String autor, Date fechaPublicacion, Ubicacion ubicacion) {
 		super(id, titulo, autor, fechaPublicacion, ubicacion);
 		// TODO Auto-generated constructor stub
 	}

@@ -7,7 +7,7 @@ import models.Ejemplar.State.Prestado;
 import models.Ejemplar.State.Devuelto;
 
 public class Ejemplar {
-    private int id;
+    private String id;
     private String titulo;
     private String autor;
     private Date fechaPublicacion;
@@ -17,7 +17,7 @@ public class Ejemplar {
 
     private EstadoEjemplar state;
 	
-    public Ejemplar(int id, String titulo, String autor, Date fechaPublicacion, Ubicacion ubicacion) {
+    public Ejemplar(String id, String titulo, String autor, Date fechaPublicacion, Ubicacion ubicacion) {
 		
 		super();
 		this.id = id;
@@ -61,7 +61,7 @@ public class Ejemplar {
         return ubicacion;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 

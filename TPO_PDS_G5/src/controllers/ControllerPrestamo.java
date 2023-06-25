@@ -10,7 +10,17 @@ public class ControllerPrestamo {
     private static ControllerPrestamo instancia;
     private ArrayList<Prestamo> prestamos;
 
-    private ControllerPrestamo() { }
+    
+    
+    public ArrayList<Prestamo> getPrestamos() {
+		return prestamos;
+	}
+
+	public void setPrestamos(ArrayList<Prestamo> prestamos) {
+		this.prestamos = prestamos;
+	}
+
+	private ControllerPrestamo() { }
 
     public static ControllerPrestamo obtenerInstancia() {
         if (instancia == null) {

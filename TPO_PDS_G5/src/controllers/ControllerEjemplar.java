@@ -10,8 +10,18 @@ import java.util.List;
 public class ControllerEjemplar{
     private static ControllerEjemplar instancia;
     private ArrayList<Ejemplar> ejemplares;
+    
+    
 
-    private ControllerEjemplar() {}
+    public ArrayList<Ejemplar> getEjemplares() {
+		return ejemplares;
+	}
+
+	public void setEjemplares(ArrayList<Ejemplar> ejemplares) {
+		this.ejemplares = ejemplares;
+	}
+
+	private ControllerEjemplar() {}
 
     public void devuelto(Ejemplar ejemplar) {
         ejemplar.devuelto();
@@ -40,7 +50,7 @@ public class ControllerEjemplar{
         ejemplares.add(ejemplar);
     }
 
-    public Ejemplar buscarEjemplarId(int id) {
+    public Ejemplar buscarEjemplarId(String id) {
         for (Ejemplar ejemplar :  ejemplares) {
             if (ejemplar.getId() == id) {
                 return ejemplar;
@@ -66,7 +76,7 @@ public class ControllerEjemplar{
     }
 
 
-    public void eliminarEjemplar(int id) {
+    public void eliminarEjemplar(String id) {
         for (Ejemplar ejemplar :  ejemplares) {
             if (ejemplar.getId() == id) {
                 ejemplares.remove(ejemplar);

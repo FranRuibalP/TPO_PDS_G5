@@ -7,7 +7,7 @@ import models.Ejemplar.Ejemplar;
 
 public class Libro extends Ejemplar {
 
-	public Libro(int id, String titulo, String autor, Date fechaPublicacion, Ubicacion ubicacion) {
+	public Libro(String id, String titulo, String autor, Date fechaPublicacion, Ubicacion ubicacion) {
 		super(id, titulo, autor, fechaPublicacion, ubicacion);
 		// TODO Auto-generated constructor stub
 	}
