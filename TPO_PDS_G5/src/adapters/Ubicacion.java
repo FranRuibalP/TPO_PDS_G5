@@ -9,11 +9,13 @@ public class Ubicacion {
 	private Integer columnas;
 	
 	public Ubicacion (int filas, int columnas) {
-		
+		this.filas=filas;
+		this.columnas=columnas;
 	}
 	
 	public ArrayList<Integer> buscarEjemplar(Ejemplar ejemplar) {
 
+		
 		ArrayList<Integer> encontrado=IAdapterExterno.buscarEjemplar(ejemplar);
 		return encontrado;
 

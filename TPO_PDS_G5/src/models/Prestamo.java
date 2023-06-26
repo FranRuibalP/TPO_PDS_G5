@@ -61,13 +61,15 @@ public class Prestamo {
 		Modificador modificador = socio.getModificador();
 		//fechaDevolucion = LocalDate.now();
 		fechaDevolucion=fechaSolicitud.plusDays(diasTranscurridos);
-		if (fechaDevolucion.isAfter(fechaSolicitud.plusDays(diasPrestamo))){
+		boolean retraso=fechaDevolucion.isAfter(fechaSolicitud.plusDays(diasPrestamo));
+		if (retraso){
 			modificador.setDias(calcularPenalizacion(),this.socio);
+			
 		}
 		else{
 			modificador.actualizarPrestamosEnTiempo();
 		}
-		socio.getModificador().setDias(calcularPenalizacion(),this.socio);
+
 		socio.getHistoriaPrestamos().add(this);
 		socio.getPrestamosActivos().remove(this);
 		ejemplar.devuelto();

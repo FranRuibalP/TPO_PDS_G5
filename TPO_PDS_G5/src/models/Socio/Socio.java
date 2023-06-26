@@ -109,6 +109,9 @@ public class Socio {
 		return dni;
 	}
 
+	public String toString() {
+		return "Nombre: " + this.nombre + " Apellido; " + this.apellido ;
+	}
     
     
     

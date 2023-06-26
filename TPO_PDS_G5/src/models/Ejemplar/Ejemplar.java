@@ -74,4 +74,10 @@ public class Ejemplar {
     public String getAutor() {
         return autor;
     }
+    
+    public String toString() {
+        return " Id : " + this.id  + " Titulo : " + this.titulo + " Autor: " + this.autor +
+                " Fecha: " + this.fechaPublicacion + " Ubicacion: " + this.ubicacion.getFilas()+" , "+this.ubicacion.getColumnas() ;
+    }
+    
 }
