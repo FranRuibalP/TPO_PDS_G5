@@ -12,8 +12,9 @@ public class Notificacion {
 	
 	
 	
-	public Notificacion(Date fecha, String motivo, String telefono, String email) {
+	public Notificacion(Date fecha, String mensaje, String motivo, String telefono, String email) {
 		super();
+		this.mensaje=mensaje;
 		this.fecha = fecha;
 		this.motivo = motivo;
 		this.telefono = telefono;
@@ -50,6 +51,8 @@ public class Notificacion {
 		this.email = email;
 	}
 	
-	
+	public String toString() {
+		return this.mensaje + this.motivo  ;
+	}
 
 }

@@ -49,7 +49,11 @@ public class Socio {
 	
 	
 	
+	
 
+	public void setHistoriaPrestamos(List<Prestamo> historiaPrestamos) {
+		this.historiaPrestamos = historiaPrestamos;
+	}
 	public String getMail() {
 		return mail;
 	}

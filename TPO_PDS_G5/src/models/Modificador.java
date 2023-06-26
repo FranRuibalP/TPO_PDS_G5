@@ -21,12 +21,12 @@ public class Modificador {
 
 
 
-	public void setDias(int diferenciaEnDias) {
+	public void setDias(int diferenciaEnDias,Socio socio) {
 
 		this.diasPenalizacion += diferenciaEnDias;
 		if (this.diasPenalizacion >= 10) {
 			this.diasPenalizacion = 0;
-			this.socio.suspender();
+			socio.suspender();
 			//lo deberia hacer otra clase el metodo suspender
 		}
 	}

@@ -7,15 +7,15 @@ import models.Ejemplar.State.Prestado;
 import models.Ejemplar.State.Devuelto;
 
 public class Ejemplar {
-    private String id;
-    private String titulo;
-    private String autor;
-    private Date fechaPublicacion;
+    protected String id;
+    protected String titulo;
+    protected String autor;
+    protected Date fechaPublicacion;
     //private EstadoEjemplar estado;
-    private Ubicacion ubicacion;
-    private int diasPrestamo;
+    protected Ubicacion ubicacion;
+    protected int diasPrestamo;
 
-    private EstadoEjemplar state;
+    protected EstadoEjemplar state;
 	
 
     

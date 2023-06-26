@@ -35,12 +35,14 @@ public class Test {
 		ArrayList<Prestamo> prestamosActivos=new ArrayList<Prestamo>();
 		
 		ArrayList<Prestamo> historiaPrestamos=new ArrayList<Prestamo>();
+		
+		
 
 		Ubicacion ubicacion=new Ubicacion ( 1, 2 ) ;
 		
 		Date fecha = Date.valueOf("1987-02-15");
 		
-		Revista revista=new Revista("15" , "hola", "Alberto" , fecha , ubicacion );
+		Ejemplar revista=new Revista("15" , "hola", "Alberto" , fecha , ubicacion );
 		
 		ArrayList<Ejemplar> listaEjemplares=new ArrayList<Ejemplar>();
 		
@@ -64,9 +66,14 @@ public class Test {
 		
 		Prestamo prestamo = new Prestamo (revista, socio);
 		
+		historiaPrestamos.add(prestamo);
 		
 		
 		Notificador contexto=new Notificador();
+		
+		contexto.Cambio(medio);
+
+		
 		
 		/*
 		 * private String mensaje;
@@ -76,12 +83,16 @@ public class Test {
 	private String email;
 		 */
 		
-		Notificacion notificacion = new Notificacion(fecha,"prueba",socio.getTelefono(),socio.getMail());
+		Notificacion notificacion = new Notificacion(fecha,"hola","prueba",socio.getTelefono(),socio.getMail());
 		
 		contexto.setNotificacion(notificacion);
 		
-		contexto.setEstrategia(socio.getMedio());
+		System.out.println(contexto.getNotificacion().toString());
+		System.out.println(contexto.getEstrategia());
+		
+		//contexto.setEstrategia(socio.getMedio());
 	
+		
 		
 		
 		System.out.println("Ingrese accion a realizar : ");
@@ -235,8 +246,6 @@ public class Test {
 			
 			case "4": 
 				
-				
-				
 				Scanner scannerPrestamo= new Scanner(System.in);
 				System.out.println("Ingrese comando a realizar : ");
 				System.out.println("Salir del sistema = 0 ");
@@ -270,22 +279,19 @@ public class Test {
 						Socio socioRealizaDevolucion2 = ControllerSocio.obtenerInstancia().buscarSocio(12345678);
 						Ejemplar EjemplarDevuelto2 = ControllerEjemplar.obtenerInstancia().buscarEjemplarId("15");
 						
+						
+						
 						Prestamo prestamoFinal2 = ControllerSocio.obtenerInstancia().SolicitarPrestamo(EjemplarDevuelto2, socioRealizaDevolucion2);
 						
 						prestamoFinal2.setDiasTranscurridos(200);
 						
 						prestamoFinal2.devolver();
 						
-						// HACER BIEN EL SUSPENDER
 						
 						System.out.println(prestamoFinal2.toString());
 						
 						Modificador mod=prestamoFinal2.getSocio().getModificador();
 						
-						
-						System.out.println(mod.getDias());
-						System.out.println(mod.getPrestamosEnTiempo());
-
 						
 						
 						break;
@@ -293,6 +299,8 @@ public class Test {
 
 				
 				}
+				
+				break;
 				
 			case "5":
 				
@@ -355,14 +363,15 @@ public class Test {
 				
 			case "7":
 				
+				List<Prestamo> historialPrestamosimprimir =  instanciaSocio.buscarSocio(12345678).getHistoriaPrestamos();
 				
-				ArrayList<Prestamo> copiaHistorialPrestamos=new ArrayList<Prestamo>(ControllerSocio.obtenerInstancia().getSocios().get(0).getHistoriaPrestamos());
-				while(!copiaHistorialPrestamos.isEmpty()) {
-					Prestamo primerPrestamo=copiaHistorialPrestamos.get(0);
-					System.out.println(primerPrestamo.getEjemplar().getAutor());
-					copiaHistorialPrestamos.remove(0);
+				
+				for(Prestamo prestamofor : historialPrestamosimprimir) {
+					System.out.println(prestamofor.getEjemplar().getAutor());
 					
 				}
+				
+				
 				
 				break;
 				

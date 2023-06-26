@@ -9,28 +9,39 @@ public class Notificador {
 	private NotificacionStrategy estrategia;
 	private Notificacion notificacion;
 	
-	public void setEstrategia(MedioComunicacion medio) {
+	public void Cambio(MedioComunicacion medio) {
+		this.estrategia=aEstrategia(medio);
+	}
+	
+	public NotificacionStrategy aEstrategia(MedioComunicacion medio) {
 		
-		
-
 		if (medio.equals(MedioComunicacion.SMS)) {
-			NotificacionStrategy estrategia=new SMS();
-			estrategia.enviarNotificacion(notificacion);
+			estrategia=new SMS();
 		}
 		if (medio.equals(MedioComunicacion.WHATSAPP)) {
-			NotificacionStrategy estrategia=new WhatsApp();
-			estrategia.enviarNotificacion(notificacion);
+			estrategia=new WhatsApp();
 		}
 		if (medio.equals(MedioComunicacion.EMAIL)) {
-			NotificacionStrategy estrategia=new Mail();
-			estrategia.enviarNotificacion(notificacion);
+			estrategia=new Mail();
 		}
 		
-		NotificacionStrategy estrategia=new Mail();
-		estrategia.enviarNotificacion(notificacion);
+		return estrategia;
+	}
+	
+	public void setEstrategia(NotificacionStrategy estrategia) {
+		
+		this.estrategia=estrategia;
+		
 		
 	}
 	
+	
+	public NotificacionStrategy getEstrategia() {
+		return estrategia;
+	}
+
+
+
 	public void enviarNotificacion(Notificacion notificacion, Socio socio) {
 		
 			
