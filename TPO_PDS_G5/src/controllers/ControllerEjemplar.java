@@ -1,10 +1,8 @@
 package controllers;
 
-import models.Prestamo;
 import models.Ejemplar.Ejemplar;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class ControllerEjemplar{
@@ -39,7 +37,7 @@ public class ControllerEjemplar{
          ejemplar.solicitarEjemplar();
     }
 
-    public static ControllerEjemplar obtenerInstancia() {
+    public static ControllerEjemplar instanciaEjemplar() {
         if (instancia == null) {
             instancia = new ControllerEjemplar();
         }

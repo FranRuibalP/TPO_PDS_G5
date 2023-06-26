@@ -1,13 +1,9 @@
 package models;
 import models.Socio.*;
-import strategies.NotificacionStrategy;
 import strategies.Notificador;
-import models.Modificador;
 import models.Ejemplar.Ejemplar;
 
 import java.sql.Date;
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -17,78 +13,81 @@ import controllers.ControllerEjemplar;
 import controllers.ControllerPrestamo;
 import controllers.ControllerSocio;
 import enumerations.MedioComunicacion;
-import enumerations.MedioComunicacion;
 import strategies.Notificacion;
 
 public class Test {
 
 	public static void main(String[] args) {
+
+		ControllerEjemplar instanciaEjemplar=ControllerEjemplar.instanciaEjemplar();
+		ControllerPrestamo instanciaPrestamo= ControllerPrestamo.obtenerInstancia();
+		ControllerSocio instanciaSocio=ControllerSocio.obtenerInstancia();
 		
 		Scanner sc= new Scanner(System.in);
 		
 		Modificador modificador=new Modificador();
 		
-		Notificador notificador = new Notificador();
-		
 		MedioComunicacion medio= MedioComunicacion.EMAIL  ;
 
 		ArrayList<Prestamo> prestamosActivos=new ArrayList<Prestamo>();
-		
+
 		ArrayList<Prestamo> historiaPrestamos=new ArrayList<Prestamo>();
-		
-		
 
 		Ubicacion ubicacion=new Ubicacion ( 1, 2 ) ;
 		
 		Date fecha = Date.valueOf("1987-02-15");
-		
-		Ejemplar revista=new Revista("15" , "hola", "Alberto" , fecha , ubicacion );
+
+
+		Ejemplar revista=new Revista("15" , "Hola", "Alberto" , fecha , ubicacion );
+
+		Ejemplar libro=new Libro("11" , "Gaturro", "Nik" , fecha , ubicacion );
+
+		Ejemplar diario=new Diario("12" , "Clarin", "Franco" , fecha , ubicacion );
 		
 		ArrayList<Ejemplar> listaEjemplares=new ArrayList<Ejemplar>();
-		
-		ControllerEjemplar.obtenerInstancia().setEjemplares(listaEjemplares);
-		
-		ControllerEjemplar.obtenerInstancia().nuevoEjemplar(revista);
-		
-		
-		Socio socio=new Socio("Lionel","Messi",12345678,"capo@gmail.com","44335126",medio,historiaPrestamos,prestamosActivos,modificador);
-		
+		instanciaEjemplar.setEjemplares(listaEjemplares);
+		instanciaEjemplar.nuevoEjemplar(revista);
+		instanciaEjemplar.nuevoEjemplar(libro);
+		instanciaEjemplar.nuevoEjemplar(diario);
+
+
+		Socio socio = new Socio("Lionel","Messi",33016244,"lmessi@gmail.com","44335126",medio,historiaPrestamos,prestamosActivos,modificador);
+
+		Socio socio2 = new Socio("Agustina","Perez",42340231,"aperez@gmail.com","44335121",medio,historiaPrestamos,prestamosActivos,modificador);
+
+		Socio socio3 = new Socio("Diego","Maradona",14332134,"dmaradona@gmail.com","34920132",medio,historiaPrestamos,prestamosActivos,modificador);
+
 		ArrayList<Socio> listaSocios=new ArrayList<Socio>();
-		
-		ControllerSocio.obtenerInstancia().setSocios(listaSocios);
-		
-		ControllerSocio.obtenerInstancia().nuevoSocio(socio);
-		
-		ControllerSocio instanciaSocio=ControllerSocio.obtenerInstancia();
-		
-		ControllerPrestamo instanciaPrestamo= ControllerPrestamo.obtenerInstancia();
-		
-		
+		instanciaSocio.setSocios(listaSocios);
+		instanciaSocio.nuevoSocio(socio);
+		instanciaSocio.nuevoSocio(socio2);
+		instanciaSocio.nuevoSocio(socio3);
+
 		Prestamo prestamo = new Prestamo (revista, socio);
-		
+
+		Prestamo prestamo2 = new Prestamo (diario, socio2);
+
+		Prestamo prestamo3 = new Prestamo (libro, socio3);
+
+		ArrayList<Prestamo> listaPrestamos=new ArrayList<Prestamo>();
+		instanciaPrestamo.setPrestamos(listaPrestamos);
+		instanciaPrestamo.nuevoPrestamo(prestamo);
+		instanciaPrestamo.nuevoPrestamo(prestamo2);
+		instanciaPrestamo.nuevoPrestamo(prestamo3);
+
 		historiaPrestamos.add(prestamo);
 		
 		
-		Notificador contexto=new Notificador();
+		Notificador notificador=new Notificador();
 		
-		contexto.Cambio(medio);
+		notificador.Cambio(medio);
 
-		
-		
-		/*
-		 * private String mensaje;
-	private Date fecha;
-	private String motivo;
-	private String telefono;
-	private String email;
-		 */
-		
 		Notificacion notificacion = new Notificacion(fecha,"hola","prueba",socio.getTelefono(),socio.getMail());
 		
-		contexto.setNotificacion(notificacion);
+		notificador.setNotificacion(notificacion);
 		
-		System.out.println(contexto.getNotificacion().toString());
-		System.out.println(contexto.getEstrategia());
+		System.out.println(notificador.getNotificacion().toString());
+		System.out.println(notificador.getEstrategia());
 		
 		//contexto.setEstrategia(socio.getMedio());
 	
@@ -110,8 +109,8 @@ public class Test {
 		while (!str.equals("0")) {
 			switch(str){
 			case "1":
-				ArrayList<Socio> socios = ControllerSocio.obtenerInstancia().getSocios();
-				ArrayList<Socio> copiaSocios= new ArrayList<Socio> (ControllerSocio.obtenerInstancia().getSocios());
+				ArrayList<Socio> socios = instanciaSocio.getSocios();
+				ArrayList<Socio> copiaSocios= new ArrayList<Socio> (instanciaSocio.getSocios());
 				while(!copiaSocios.isEmpty()) {
 					Socio primero=copiaSocios.get(0);
 					System.out.println(primero.getDni());
@@ -121,8 +120,8 @@ public class Test {
 				break;
 			case "2":
 				
-				ArrayList<Ejemplar> ejemplares= ControllerEjemplar.obtenerInstancia().getEjemplares();
-				ArrayList<Ejemplar> copiaEjemplares= new ArrayList<Ejemplar> (ControllerEjemplar.obtenerInstancia().getEjemplares());
+				ArrayList<Ejemplar> ejemplares= instanciaEjemplar.getEjemplares();
+				ArrayList<Ejemplar> copiaEjemplares= new ArrayList<Ejemplar> (instanciaEjemplar.getEjemplares());
 				while(!copiaEjemplares.isEmpty()) {
 					Ejemplar primero=copiaEjemplares.get(0);
 					System.out.println(primero.getAutor());
@@ -133,8 +132,8 @@ public class Test {
 				System.out.println("chau");
 				break;
 			case "3":
-				ArrayList<Ejemplar> busquedaEjemplares= ControllerEjemplar.obtenerInstancia().getEjemplares();
-				ArrayList<Ejemplar> busquedaCopiaEjemplares= new ArrayList<Ejemplar> (ControllerEjemplar.obtenerInstancia().getEjemplares());
+				ArrayList<Ejemplar> busquedaEjemplares= instanciaEjemplar.getEjemplares();
+				ArrayList<Ejemplar> busquedaCopiaEjemplares= new ArrayList<Ejemplar> (instanciaEjemplar.getEjemplares());
 				Scanner nuevoScanner= new Scanner(System.in);
 				System.out.println("Ingrese busqueda a realizar : ");
 				System.out.println("Salir del sistema = 0 ");
@@ -257,10 +256,10 @@ public class Test {
 				switch(comandoPrestamo){
 					case "1":
 						
-						Socio socioRealizaDevolucion = ControllerSocio.obtenerInstancia().buscarSocio(12345678);
-						Ejemplar EjemplarDevuelto = ControllerEjemplar.obtenerInstancia().buscarEjemplarId("15");
+						Socio socioRealizaDevolucion = instanciaSocio.buscarSocio(12345678);
+						Ejemplar EjemplarDevuelto = instanciaEjemplar.buscarEjemplarId("15");
 						
-						Prestamo prestamoFinal = ControllerSocio.obtenerInstancia().SolicitarPrestamo(EjemplarDevuelto, socioRealizaDevolucion);
+						Prestamo prestamoFinal = instanciaSocio.SolicitarPrestamo(EjemplarDevuelto, socioRealizaDevolucion);
 						
 						prestamoFinal.setDiasTranscurridos(15);
 						
@@ -276,12 +275,12 @@ public class Test {
 						break;
 				
 					case "2":
-						Socio socioRealizaDevolucion2 = ControllerSocio.obtenerInstancia().buscarSocio(12345678);
-						Ejemplar EjemplarDevuelto2 = ControllerEjemplar.obtenerInstancia().buscarEjemplarId("15");
+						Socio socioRealizaDevolucion2 = instanciaSocio.buscarSocio(12345678);
+						Ejemplar EjemplarDevuelto2 = instanciaEjemplar.buscarEjemplarId("15");
 						
 						
 						
-						Prestamo prestamoFinal2 = ControllerSocio.obtenerInstancia().SolicitarPrestamo(EjemplarDevuelto2, socioRealizaDevolucion2);
+						Prestamo prestamoFinal2 = instanciaSocio.SolicitarPrestamo(EjemplarDevuelto2, socioRealizaDevolucion2);
 						
 						prestamoFinal2.setDiasTranscurridos(200);
 						
@@ -316,7 +315,7 @@ public class Test {
 				switch(cambioLibro){
 					case "Diario":
 						
-						Diario diario = new Diario();
+						Diario diario2 = new Diario();
 						
 						System.out.println("Ingrese la cantidad de dias: "); 
 						
@@ -324,7 +323,7 @@ public class Test {
 						
 						String cambiarDias=  cantidadDias.nextLine();
 						
-						diario.setDiasPrestamo( Integer.parseInt(cambiarDias) );
+						diario2.setDiasPrestamo( Integer.parseInt(cambiarDias) );
 						
 						System.out.println(diario.getDiasPrestamo());
 						
@@ -336,10 +335,10 @@ public class Test {
 				
 			case"6":
 				
-				Socio socioRealizaDevolucion2 = ControllerSocio.obtenerInstancia().buscarSocio(12345678);
-				Ejemplar EjemplarDevuelto2 = ControllerEjemplar.obtenerInstancia().buscarEjemplarId("15");
+				Socio socioRealizaDevolucion2 = instanciaSocio.buscarSocio(12345678);
+				Ejemplar EjemplarDevuelto2 = instanciaEjemplar.buscarEjemplarId("15");
 				
-				Prestamo prestamoFinal2 = ControllerSocio.obtenerInstancia().SolicitarPrestamo(EjemplarDevuelto2, socioRealizaDevolucion2);
+				Prestamo prestamoFinal2 = instanciaSocio.SolicitarPrestamo(EjemplarDevuelto2, socioRealizaDevolucion2);
 				
 				for(int i=0;i<10;i++) {
 					prestamoFinal2.setDiasTranscurridos(prestamoFinal2.getDiasTranscurridos()+1);
@@ -348,7 +347,7 @@ public class Test {
 					if (i==8) { //prestamoFinal2.getDiasTranscurridos()==prestamoFinal2.getDiasPrestamo()-1) {
 						System.out.println("dasd");
 						
-						prestamoFinal2.setNotificador(contexto);
+						prestamoFinal2.setNotificador(notificador);
 						
 						instanciaPrestamo.notificar(prestamoFinal2);
 

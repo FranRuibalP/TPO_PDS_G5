@@ -30,6 +30,7 @@ public class Socio {
     
 	public Socio(String nombre, String apellido, int dni, String mail, String telefono, MedioComunicacion medio,
 			List<Prestamo> historiaPrestamos, List<Prestamo> prestamosActivos, Modificador modificador) {
+
 		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -93,7 +94,8 @@ public class Socio {
 	}
 
 	public void suspender() {
-			this.state = new Suspendido();
+
+		this.state = new Suspendido();
 	}
 	public EstadoSocio getState() {
 		return state;
